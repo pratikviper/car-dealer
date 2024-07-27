@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} | Payment {% endblock %}
+{% block content %}
+
+{% load humanize %}
+{% load static %}
+<div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Payment</h1>
+            <ul class="breadcrumbs">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active">Payment</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-section">
+                    <div class="logo-2">
+                        <a href="index.html">
+                            <img src="{% static 'img/logos/black-logo.png' %}" alt="logo">
+                        </a>
+                    </div>
+                    <h3>Payment Form</h3>
+                    {% include 'includes/messages.html' %}
+                    <form action="{% url 'payment_form' %}" method="POST">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <div class="form-group mb-0 clearfix">
+                          <button type="submit" class="btn-md btn-theme float-center">Submit Payment</button>
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}
